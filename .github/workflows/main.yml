@@ -14,4 +14,4 @@ jobs:
         url: 'https://human-changelog-git-main-cold-briu.vercel.app/api/changelogs'
         method: 'POST'
         customHeaders: '{"Content-Type": "application/json"}'
-        data: '{ "name" : "${{ github.event.release.name }}", "origin" : "${{ github.event.repository }}", "version" : "${{ github.event.release.tag_name }}", "changelog" : $(echo "${{ github.event.release.body }}" | tr "\n" "\\n") }'
+        data: '{ "name" : "${{ github.event.release.name }}", "origin" : "${{ github.repository }}", "version" : "${{ github.event.release.tag_name }}", "changelog" : "wip body" }'
