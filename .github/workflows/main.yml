@@ -19,5 +19,5 @@ jobs:
               "name" : "${{ github.event.release.name }}", 
               "origin" : "${{ github.repository }}", 
               "version" : "${{ github.event.release.tag_name }}", 
-              "changelog" : "${{ github.event.release.body | tr '\n' '\\n' }}" 
+              "changelog" : "${{ github.event.release.body}}" 
             }
