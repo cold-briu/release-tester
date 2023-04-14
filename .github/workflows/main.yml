@@ -22,6 +22,5 @@ jobs:
               "name" : "${{ github.event.release.name }}", 
               "origin" : "${{ github.repository }}", 
               "version" : "${{ github.event.release.tag_name }}", 
-              "changelog" : "${{ github.event.release.body}}" 
               "changelog" : "${{ env.PARSED_RELEASE_BODY }}"
             }
