@@ -10,7 +10,7 @@ jobs:
     steps:
     - name: Parse release body
       id: vars
-      run: echo "PARSED_RELEASE_BODY=$(echo "${{ github.event.release.body}}" | sed 's/$/\\n/' | tr -d '\n')" >> $GITHUB_ENV
+      run: echo "PARSED_RELEASE_BODY=$(echo ${ github.event.release.body} | sed 's/$/\\n/' | tr -d '\n')" >> $GITHUB_ENV
     - name: Deploy Stage
       uses: fjogeleit/http-request-action@v1
       with:
