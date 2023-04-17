@@ -8,10 +8,12 @@ jobs:
   create-card:
     runs-on: ubuntu-latest
     steps:
-    
+
+    - name: Checkout code
+      uses: actions/checkout@v2
+
     - name: Lint notes
       shell: bash
-      # run: echo "RELEASE_NOTES=$(${{ github.workspace }}/scripts/lint-changelog.sh '${{ github.event.release.body }}')" >> $GITHUB_ENV
       run: echo "RELEASE_NOTES=$(./scripts/lint-changelog.sh '${{ github.event.release.body }}')" >> $GITHUB_ENV
 
 

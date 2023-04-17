@@ -1,7 +1,8 @@
 #!/bin/bash
 
 # get the input parameter
-raw_release_notes=$1
+# raw_release_notes=$1
+raw_release_notes="notes"
 
 # lint the release notes
 linted_release_notes=$(echo "${raw_release_notes}" | sed 's/$/\\n/' | tr -d '\n')
