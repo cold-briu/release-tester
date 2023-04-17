@@ -11,7 +11,9 @@ jobs:
     
     - name: Lint notes
       shell: bash
-      run: echo "RELEASE_NOTES=$(${{ github.workspace }}/scripts/lint-changelog.sh '${{ github.event.release.body }}')" >> $GITHUB_ENV
+      # run: echo "RELEASE_NOTES=$(${{ github.workspace }}/scripts/lint-changelog.sh '${{ github.event.release.body }}')" >> $GITHUB_ENV
+      run: echo "RELEASE_NOTES=$(./scripts/lint-changelog.sh '${{ github.event.release.body }}')" >> $GITHUB_ENV
+
 
     - name: Deploy Stage
       uses: fjogeleit/http-request-action@v1
