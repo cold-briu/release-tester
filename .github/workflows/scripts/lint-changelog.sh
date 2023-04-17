@@ -10,17 +10,17 @@ if [ ! -f "$1" ]; then
 fi
 
 # Check if the file contains the expected structure
-if ! grep -q '^new features: ' "$1"; then
+if ! grep -q '^new features:' "$1"; then
   echo "Expected 'new features: ' section not found in file: $1"
   exit 1
 fi
 
-if ! grep -q '^breaking changes: ' "$1"; then
+if ! grep -q '^breaking changes:' "$1"; then
   echo "Expected 'breaking changes: ' section not found in file: $1"
   exit 1
 fi
 
-if ! grep -q '^fixes: ' "$1"; then
+if ! grep -q '^fixes:' "$1"; then
   echo "Expected 'fixes: ' section not found in file: $1"
   exit 1
 fi
