@@ -1,4 +1,10 @@
 These are demo relase notes for human changelog
+
+new features:
 - new fun 🥳
-- no bugs 😇
+
+breaking changes:
 - more sutff 🤯
+
+fixes:
+- no bugs 😇
