@@ -26,8 +26,8 @@ if ! grep -q '^fixes:' "$1"; then
 fi
 
 
-# remove line breaks
-linted_release_notes=$(echo "${raw_release_notes}" | sed 's/$/\\n/' | tr -d '\n')
+# bypass:  remove line breaks
+linted_release_notes=$raw_release_notes
 
 # output the linted release notes
 echo "${linted_release_notes}"

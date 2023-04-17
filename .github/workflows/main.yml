@@ -12,9 +12,13 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v2
 
+    - name: Remove line breaks
+      run: echo "PARSED_RELEASE_BODY=$(echo ${ github.event.release.body} | sed 's/$/\\n/' | tr -d '\n')" >> $GITHUB_ENV
+
+
     - name: Lint notes
       shell: bash
-      run: echo "RELEASE_NOTES=$(bash ./.github/workflows/scripts/lint-changelog.sh '${{ github.event.release.body }}')" >> $GITHUB_ENV
+      run: echo "RELEASE_NOTES=$(bash ./.github/workflows/scripts/lint-changelog.sh '${{ env.PARSED_RELEASE_BODY }}')" >> $GITHUB_ENV
 
 
     - name: Deploy Stage
