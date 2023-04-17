@@ -17,5 +17,5 @@ echo "$new_version" > version.txt
 tag_name="$new_version"
 title="Release $new_version"
 body="This is release $new_version."
-gh release create "v$tag_name" --notes-file ./changelog.md
+gh release create "v$tag_name" --title "$title" --notes-file ./changelog.md 
 echo "Created release $tag_name"
