@@ -32,12 +32,4 @@ jobs:
         url: 'https://human-changelog-git-main-cold-briu.vercel.app/api/changelogs'
         method: 'POST'
         customHeaders: '{"Content-Type": "application/json"}'
-        data: >-
-            { 
-              'name' : '${{ github.event.release.name }}',
-              'origin' : '${{ github.repository }}',
-              'version' : '${{ github.event.release.tag_name }}',
-              'changelog' : '${{ env.RELEASE_NOTES || 'MISSING_NOTES' }}',
-              'date' : '${{ github.event.release.published_at }}',
-              'release_url' : '${{ github.event.release.url }}',
-            }
+        data: "{ 'name' : '${{ github.event.release.name }}', 'origin' : '${{ github.repository }}', 'version' : '${{ github.event.release.tag_name }}', 'changelog' : '${{ env.RELEASE_NOTES || 'MISSING_NOTES' }}', 'date' : '${{ github.event.release.published_at }}', 'release_url' : '${{ github.event.release.url }}' }"
