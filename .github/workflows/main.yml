@@ -38,6 +38,5 @@ jobs:
               "origin" : "${{ github.repository }}", 
               "version" : "${{ github.event.release.tag_name }}", 
               "changelog" : "${{ env.RELEASE_NOTES || 'MISSING_NOTES' }}",
-              "date" : "${{ github.event.release.published_at }}",
-              "url" : "${{ github.event.release.html_url }}
+              "date" : "${{ github.event.release.published_at }}"
             }
