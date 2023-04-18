@@ -17,13 +17,13 @@ jobs:
 
     - name: Lint notes
       shell: bash
-            run: |
-              RELEASE_NOTES=$(bash ./.github/workflows/scripts/lint-changelog.sh '${{ env.PARSED_RELEASE_BODY }}')
-              if [ $? -ne 0 ]; then
-                echo "$RELEASE_NOTES"
-                exit 1
-              fi
-              echo "RELEASE_NOTES=$RELEASE_NOTES" >> $GITHUB_ENV
+      run: |
+        RELEASE_NOTES=$(bash ./.github/workflows/scripts/lint-changelog.sh '${{ env.PARSED_RELEASE_BODY }}')
+        if [ $? -ne 0 ]; then
+          echo "$RELEASE_NOTES"
+          exit 1
+        fi
+        echo "RELEASE_NOTES=$RELEASE_NOTES" >> $GITHUB_ENV
 
 
     - name: Deploy Stage
