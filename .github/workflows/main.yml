@@ -37,5 +37,7 @@ jobs:
               "name" : "${{ github.event.release.name }}", 
               "origin" : "${{ github.repository }}", 
               "version" : "${{ github.event.release.tag_name }}", 
-              "changelog" : "${{ env.RELEASE_NOTES || 'MISSING_NOTES' }}"
+              "changelog" : "${{ env.RELEASE_NOTES || 'MISSING_NOTES' }}",
+              "date" : "${{ github.event.release.published_at }}",
+              "release_url" : "${{ github.event.release.url }}",
             }
