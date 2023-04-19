@@ -12,6 +12,7 @@ function get_lines() {
 function check_block() {
     local block_name="$1"
     local block_found=false
+    local items_amount=0
 
     for i in "${!lines[@]}"
         do
@@ -21,11 +22,23 @@ function check_block() {
                 block_found=true
 
             elif [[ "$block_found" == true && "${lines[$i]}" =~ ^-.* ]]; then
-                echo "Item: ${lines[$i]}"
+
+                items_amount=$(expr $items_amount + 1)
+                echo "  item $items_amount : ${lines[$i]}"
+
             elif [[ "$block_found" == true ]]; then
                 break
             fi
         done
+
+    # how to: "if items_amount == 0; set line 'no items for $block_name' "
+
+    if [[ "$block_found" == false ]]; then
+        echo "Block not found: $block_name"
+        exit 1
+      elif [[ "$block_found" == true && "$items_amount" == 0 ]]; then
+        echo "No items for $block_name"
+    fi
 }
 
 function linter() {
