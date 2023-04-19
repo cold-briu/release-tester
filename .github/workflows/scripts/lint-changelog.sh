@@ -59,7 +59,7 @@ function linter() {
     #     echo "$i: ${lines[$i]}"
     # done
 
-    # echo "$raw_input"
+    echo "$raw_input"
 }
 
 # linter "$input"
