@@ -1,6 +1,7 @@
 #!/bin/bash
 
-raw_input='These are demo release notes for human changelog\n\nnew features:\n- new fun 🥳\n- other feat 🥳\n\nbreaking changes:\n- more stuff 🤯\n\nfixes:\n- no bugs 😇\n\n'
+# raw_input='These are demo release notes for human changelog\n\nnew features:\n- new fun 🥳\n- other feat 🥳\n\nbreaking changes:\n- more stuff 🤯\n\nfixes:\n- no bugs 😇\n\n'
+input="These are demo release notes for human changelog\n\nnew features:\n- new fun 🥳\n- other feat 🥳\n\nbreaking changes:\n- more stuff 🤯\n\nfixes:\n- no bugs 😇\n\n"
 
 
 function get_lines() {
@@ -17,32 +18,33 @@ function check_block() {
     for i in "${!lines[@]}"
         do
             if [[ "${lines[$i]}" == "$block_name"* ]]; then
-
-                echo "found at $i: ${lines[$i]}"
+                # echo "found at line $i: ${lines[$i]}"
                 block_found=true
 
             elif [[ "$block_found" == true && "${lines[$i]}" =~ ^-.* ]]; then
 
                 items_amount=$(expr $items_amount + 1)
-                echo "  item $items_amount : ${lines[$i]}"
+                # echo "  item $items_amount : ${lines[$i]}"
 
             elif [[ "$block_found" == true ]]; then
                 break
             fi
         done
 
-    # how to: "if items_amount == 0; set line 'no items for $block_name' "
 
     if [[ "$block_found" == false ]]; then
         echo "Block not found: $block_name"
         exit 1
-      elif [[ "$block_found" == true && "$items_amount" == 0 ]]; then
+    elif [[ "$block_found" == true && "$items_amount" == 0 ]]; then
+        # how to: "if items_amount == 0; set line 'no items for $block_name' "
         echo "No items for $block_name"
+        exit 1
     fi
 }
 
 function linter() {
-#   get_lines "$raw_input"
+    local raw_input=$1
+
     lines=()
 
     get_lines "$raw_input"
@@ -56,8 +58,11 @@ function linter() {
     # do
     #     echo "$i: ${lines[$i]}"
     # done
+
+    # echo "$raw_input"
 }
 
-linter "$raw_input"
+# linter "$input"
+linter "$1"
 
 
