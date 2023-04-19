@@ -1,24 +1,26 @@
 #!/bin/bash
 
-# get the input parameter
-raw_release_notes=$1
+raw_input='These are demo release notes for human changelog\n\nnew features:\n- new fun 🥳\n\nbreaking changes:\n- more stuff 🤯\n\nfixes:\n- no bugs 😇\n\n'
 
-# # Check if the string contains the expected structure
-# if [[ ! "$raw_release_notes" =~ ^new\ features: ]]; then
-#   echo "Expected 'new features: ' section not found in release notes"
-#   exit 1
-# fi
-
-# if [[ ! "$raw_release_notes" =~ ^breaking\ changes: ]]; then
-#   echo "Expected 'breaking changes: ' section not found in release notes"
-#   exit 1
-# fi
-
-# if [[ ! "$raw_release_notes" =~ ^fixes: ]]; then
-#   echo "Expected 'fixes: ' section not found in release notes"
-#   exit 1
-# fi
+function get_lines() {
+    local raw_input="$1"
+    
+    mapfile -t lines < <( echo $raw_input | awk -F'\\\\n' '{for(i=1; i<=NF; i++) print $i}' )
+}
 
 
-# output the linted release notes
-echo "${raw_release_notes}"
+function linter() {
+#   get_lines "$raw_input"
+    lines=()
+
+    get_lines "$raw_input"
+
+    for i in "${!lines[@]}"
+    do
+        echo "Line $i: ${lines[$i]}"
+    done
+}
+
+linter "$raw_input"
+
+
